@@ -1,0 +1,2504 @@
+{
+	"info": {
+		"_postman_id": "72deea1e-817e-4d6c-b0b1-5b9318c19bcc",
+		"name": "MockAPI Testing Collection",
+		"description": "50 requests using MockAPI with GET, POST, PUT, PATCH (No API key, No rate limits)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "57155885",
+		"_collection_link": "https://2024dipta-6384523.postman.co/workspace/Dipta-13's-Workspace~875fe404-8507-499e-81ca-917ccaefcf49/collection/57155885-72deea1e-817e-4d6c-b0b1-5b9318c19bcc?action=share&source=collection_link&creator=57155885"
+	},
+	"item": [
+		{
+			"name": "GET 01 - Get All Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is JSON\", function () {",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"const users = pm.response.json();",
+							"",
+							"pm.test(\"Users array exists\", function () {",
+							"    pm.expect(users).to.be.an(\"array\");",
+							"});",
+							"",
+							"console.log(\"GET 01 - Total users:\", users.length);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 02 - Get All Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const users = pm.response.json();",
+							"",
+							"pm.test(\"Users array exists\", function () {",
+							"    pm.expect(users).to.be.an(\"array\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 03 - Get User by ID 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const user = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(user).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/1",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 04 - Get User by ID 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const user = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(user).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/2",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 05 - Get User by ID 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const user = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(user).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/3",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 06 - Get User by ID 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const user = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(user).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/4",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 07 - Get User by ID 5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const user = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(user).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/5",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 08 - Get User by ID 6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const user = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(user).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/6",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 09 - Get User by ID 7",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const user = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(user).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/7",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 10 - Get User by ID 8",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const user = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(user).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/8",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 11 - Get User by ID 9",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const user = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(user).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/9",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 12 - Get User by ID 10",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const user = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(user).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/10",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 13 - Get Users with Filter (age=30)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const users = pm.response.json();",
+							"",
+							"pm.test(\"Users array exists\", function () {",
+							"    pm.expect(users).to.be.an(\"array\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user?age=30",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "age",
+							"value": "30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 14 - Get Users with Filter (age=25)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const users = pm.response.json();",
+							"",
+							"pm.test(\"Users array exists\", function () {",
+							"    pm.expect(users).to.be.an(\"array\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user?age=25",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "age",
+							"value": "25"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 15 - Get Users Sorted by Name (ASC)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const users = pm.response.json();",
+							"",
+							"pm.test(\"Users array exists\", function () {",
+							"    pm.expect(users).to.be.an(\"array\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user?sortBy=name&order=asc",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "name"
+						},
+						{
+							"key": "order",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 16 - Get Users Sorted by Age (DESC)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const users = pm.response.json();",
+							"",
+							"pm.test(\"Users array exists\", function () {",
+							"    pm.expect(users).to.be.an(\"array\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user?sortBy=age&order=desc",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "age"
+						},
+						{
+							"key": "order",
+							"value": "desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 17 - Get Users with Limit 5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const users = pm.response.json();",
+							"",
+							"pm.test(\"Users array exists\", function () {",
+							"    pm.expect(users).to.be.an(\"array\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user?limit=5",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 18 - Get Users with Limit 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const users = pm.response.json();",
+							"",
+							"pm.test(\"Users array exists\", function () {",
+							"    pm.expect(users).to.be.an(\"array\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user?limit=3",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 19 - Get Users with Page 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const users = pm.response.json();",
+							"",
+							"pm.test(\"Users array exists\", function () {",
+							"    pm.expect(users).to.be.an(\"array\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user?page=2&limit=5",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET 20 - Get Users with Page 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const users = pm.response.json();",
+							"",
+							"pm.test(\"Users array exists\", function () {",
+							"    pm.expect(users).to.be.an(\"array\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user?page=3&limit=5",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "3"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST 01 - Create User John",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response is JSON\", function () {",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"const newUser = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(newUser).to.have.property(\"id\");",
+							"});",
+							"",
+							"pm.test(\"Name matches\", function () {",
+							"    pm.expect(newUser.name).to.eql(\"John\");",
+							"});",
+							"",
+							"console.log(\"POST 01 - Created user ID:\", newUser.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"John\",\n    \"email\": \"john@example.com\",\n    \"age\": 30\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST 02 - Create User Jane",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"const newUser = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(newUser).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Jane\",\n    \"email\": \"jane@example.com\",\n    \"age\": 25\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST 03 - Create User Bob",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"const newUser = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(newUser).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Bob\",\n    \"email\": \"bob@example.com\",\n    \"age\": 35\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST 04 - Create User Alice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"const newUser = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(newUser).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Alice\",\n    \"email\": \"alice@example.com\",\n    \"age\": 28\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST 05 - Create User Charlie",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"const newUser = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(newUser).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Charlie\",\n    \"email\": \"charlie@example.com\",\n    \"age\": 32\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST 06 - Create User Diana",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"const newUser = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(newUser).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Diana\",\n    \"email\": \"diana@example.com\",\n    \"age\": 27\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST 07 - Create User Eve",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"const newUser = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(newUser).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Eve\",\n    \"email\": \"eve@example.com\",\n    \"age\": 31\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST 08 - Create User Frank",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"const newUser = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(newUser).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Frank\",\n    \"email\": \"frank@example.com\",\n    \"age\": 40\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST 09 - Create User Grace",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"const newUser = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(newUser).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Grace\",\n    \"email\": \"grace@example.com\",\n    \"age\": 29\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST 10 - Create User Henry",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"const newUser = pm.response.json();",
+							"",
+							"pm.test(\"User has ID\", function () {",
+							"    pm.expect(newUser).to.have.property(\"id\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Henry\",\n    \"email\": \"henry@example.com\",\n    \"age\": 33\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT 01 - Update User 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is JSON\", function () {",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"const updatedUser = pm.response.json();",
+							"",
+							"pm.test(\"Name updated\", function () {",
+							"    pm.expect(updatedUser.name).to.eql(\"Updated John\");",
+							"});",
+							"",
+							"console.log(\"PUT 01 - Updated user 1\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Updated John\",\n    \"email\": \"john.updated@example.com\",\n    \"age\": 31\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/1",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT 02 - Update User 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const updatedUser = pm.response.json();",
+							"",
+							"pm.test(\"Name updated\", function () {",
+							"    pm.expect(updatedUser.name).to.eql(\"Updated Jane\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Updated Jane\",\n    \"email\": \"jane.updated@example.com\",\n    \"age\": 26\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/2",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT 03 - Update User 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const updatedUser = pm.response.json();",
+							"",
+							"pm.test(\"Name updated\", function () {",
+							"    pm.expect(updatedUser.name).to.eql(\"Updated Bob\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Updated Bob\",\n    \"email\": \"bob.updated@example.com\",\n    \"age\": 36\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/3",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT 04 - Update User 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const updatedUser = pm.response.json();",
+							"",
+							"pm.test(\"Name updated\", function () {",
+							"    pm.expect(updatedUser.name).to.eql(\"Updated Alice\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Updated Alice\",\n    \"email\": \"alice.updated@example.com\",\n    \"age\": 29\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/4",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT 05 - Update User 5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const updatedUser = pm.response.json();",
+							"",
+							"pm.test(\"Name updated\", function () {",
+							"    pm.expect(updatedUser.name).to.eql(\"Updated Charlie\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Updated Charlie\",\n    \"email\": \"charlie.updated@example.com\",\n    \"age\": 33\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/5",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT 06 - Update User 6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const updatedUser = pm.response.json();",
+							"",
+							"pm.test(\"Name updated\", function () {",
+							"    pm.expect(updatedUser.name).to.eql(\"Updated Diana\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Updated Diana\",\n    \"email\": \"diana.updated@example.com\",\n    \"age\": 28\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/6",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT 07 - Update User 7",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const updatedUser = pm.response.json();",
+							"",
+							"pm.test(\"Name updated\", function () {",
+							"    pm.expect(updatedUser.name).to.eql(\"Updated Eve\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Updated Eve\",\n    \"email\": \"eve.updated@example.com\",\n    \"age\": 32\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/7",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT 08 - Update User 8",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const updatedUser = pm.response.json();",
+							"",
+							"pm.test(\"Name updated\", function () {",
+							"    pm.expect(updatedUser.name).to.eql(\"Updated Frank\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Updated Frank\",\n    \"email\": \"frank.updated@example.com\",\n    \"age\": 41\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/8",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT 09 - Update User 9",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const updatedUser = pm.response.json();",
+							"",
+							"pm.test(\"Name updated\", function () {",
+							"    pm.expect(updatedUser.name).to.eql(\"Updated Grace\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Updated Grace\",\n    \"email\": \"grace.updated@example.com\",\n    \"age\": 30\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/9",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT 10 - Update User 10",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const updatedUser = pm.response.json();",
+							"",
+							"pm.test(\"Name updated\", function () {",
+							"    pm.expect(updatedUser.name).to.eql(\"Updated Henry\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Updated Henry\",\n    \"email\": \"henry.updated@example.com\",\n    \"age\": 34\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/10",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH 01 - Patch User 1 (Age only)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response is JSON\", function () {",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"const patchedUser = pm.response.json();",
+							"",
+							"pm.test(\"Age updated\", function () {",
+							"    pm.expect(patchedUser.age).to.eql(32);",
+							"});",
+							"",
+							"console.log(\"PATCH 01 - Patched user 1 age\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"age\": 32\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/1",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH 02 - Patch User 2 (Age only)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const patchedUser = pm.response.json();",
+							"",
+							"pm.test(\"Age updated\", function () {",
+							"    pm.expect(patchedUser.age).to.eql(27);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"age\": 27\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/2",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH 03 - Patch User 3 (Age only)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const patchedUser = pm.response.json();",
+							"",
+							"pm.test(\"Age updated\", function () {",
+							"    pm.expect(patchedUser.age).to.eql(37);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"age\": 37\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/3",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH 04 - Patch User 4 (Age only)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const patchedUser = pm.response.json();",
+							"",
+							"pm.test(\"Age updated\", function () {",
+							"    pm.expect(patchedUser.age).to.eql(30);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"age\": 30\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/4",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH 05 - Patch User 5 (Age only)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const patchedUser = pm.response.json();",
+							"",
+							"pm.test(\"Age updated\", function () {",
+							"    pm.expect(patchedUser.age).to.eql(34);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"age\": 34\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/5",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH 06 - Patch User 6 (Age only)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const patchedUser = pm.response.json();",
+							"",
+							"pm.test(\"Age updated\", function () {",
+							"    pm.expect(patchedUser.age).to.eql(29);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"age\": 29\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/6",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH 07 - Patch User 7 (Age only)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const patchedUser = pm.response.json();",
+							"",
+							"pm.test(\"Age updated\", function () {",
+							"    pm.expect(patchedUser.age).to.eql(33);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"age\": 33\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/7",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH 08 - Patch User 8 (Age only)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const patchedUser = pm.response.json();",
+							"",
+							"pm.test(\"Age updated\", function () {",
+							"    pm.expect(patchedUser.age).to.eql(42);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"age\": 42\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/8",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH 09 - Patch User 9 (Age only)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const patchedUser = pm.response.json();",
+							"",
+							"pm.test(\"Age updated\", function () {",
+							"    pm.expect(patchedUser.age).to.eql(31);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"age\": 31\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/9",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH 10 - Patch User 10 (Age only)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const patchedUser = pm.response.json();",
+							"",
+							"pm.test(\"Age updated\", function () {",
+							"    pm.expect(patchedUser.age).to.eql(35);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"age\": 35\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://6a757d5532ae114127837736.mockapi.io/user/10",
+					"protocol": "https",
+					"host": [
+						"6a757d5532ae114127837736",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"user",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
