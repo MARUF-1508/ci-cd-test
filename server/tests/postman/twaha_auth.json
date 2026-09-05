@@ -1,0 +1,239 @@
+{
+  "info": {
+    "_postman_id": "70da33d9-80d3-416e-a8d1-01184f1f5019",
+    "name": "Posts",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "4651505",
+    "_collection_link": "https://go.postman.co/collection/4651505-70da33d9-80d3-416e-a8d1-01184f1f5019?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "http://localhost:5000/api/twaha/auth/register",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// needed for the next test requests\nconst responseData = pm.response.json();\nconst jwtToken = responseData.token;\npm.collectionVariables.set(\"jwtToken\", jwtToken);\n\npm.test(\"User registered successfully\", () => {\n    pm.expect(responseData.message).to.eql(\"User registered successfully\");    \n});\n\npm.test(\"User registration result returns proper user JSON\", () => {\n    pm.expect(responseData.user.id).to.be.a(\"number\");\n    pm.expect(responseData.user.email).to.be.a(\"string\");\n    pm.expect(responseData.user.username).to.be.a(\"string\");\n    pm.expect(responseData.user.createdat).to.be.a(\"string\");\n});\n\npm.test(\"Successful user registration result returns user's JWT token\", () => {\n    pm.expect(responseData.token).to.be.a(\"string\");\n});\n\n"
+            ]
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const timestamp = Date.now();\nconst jsonPayload = {\n    username: `user${timestamp}`,\n    email: `user${timestamp}@gmail.com`,\n    password: `password${timestamp}`\n};\n\npm.request.body.raw = JSON.stringify(jsonPayload);\n\npm.collectionVariables.set(\"registeredUsername\", jsonPayload.username);\npm.collectionVariables.set(\"registeredEmail\", jsonPayload.email);\npm.collectionVariables.set(\"registeredPassword\", jsonPayload.password);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\": \"twaha\",\n    \"email\": \"twaha@gmail.com\",\n    \"password\": \"password123\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/twaha/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "twaha",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:5000/api/twaha/auth/account-info",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const token = pm.collectionVariables.get(\"jwtToken\");\n\npm.request.headers.upsert({\n    key: \"Authorization\",\n    value: \"Bearer \" + token\n});"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const responseData = pm.response.json();\n\npm.test(\"User account info is returned with correct data types\", () => {\n    pm.expect(responseData.user.id).to.be.a(\"number\");\n    pm.expect(responseData.user.email).to.be.a(\"string\");\n    pm.expect(responseData.user.username).to.be.a(\"string\");\n    pm.expect(responseData.user.role).to.be.a(\"string\");\n    pm.expect(responseData.user.created_at).to.be.a(\"string\");\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/twaha/auth/account-info",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "twaha",
+            "auth",
+            "account-info"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:5000/api/twaha/auth/login",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const jsonPayload = {\n    username: \"admin\",\n    email: \"admin@jucsef.me\",\n    password: \"admin123\"\n};\n\npm.request.body.raw = JSON.stringify(jsonPayload);"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const responseData = pm.response.json();\n\npm.test(\"User can successfully log in\", () => {\n    pm.response.to.have.status(200);\n    pm.expect(responseData.message).to.be.a(\"string\");\n    pm.expect(responseData.message).to.equal(\"Login successful\");\n});\n\npm.test(\"User's account ID and username is returned on successful log in\", () => {\n    pm.expect(responseData.user.id).to.be.a(\"number\");\n    pm.expect(responseData.user.username).to.be.a(\"string\");\n});\n\npm.test(\"User's JWT token is returned on successful log in\", () => {\n    pm.expect(responseData.token).to.be.a(\"string\");\n});\n\n// store for role update endpoint test\npm.collectionVariables.set(\"adminJwtToken\", responseData.token);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/twaha/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "twaha",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Role update endpoint (Admin user)",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const token = pm.collectionVariables.get(\"adminJwtToken\");\n\npm.request.headers.upsert({\n    key: \"Authorization\",\n    value: \"Bearer \" + token\n});\n\nconst jsonPayload = {\n    username: pm.collectionVariables.get(\"registeredUsername\"),\n    role: \"ADMIN\"\n};\npm.request.body.raw = JSON.stringify(jsonPayload);"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const responseData = pm.response.json();\n\npm.test(\"Admin user can successfully update user role\", () => {\n    pm.response.to.have.status(200);\n    pm.expect(responseData.username).to.be.a(\"string\");\n    pm.expect(responseData.role).to.be.a(\"string\");\n});\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/twaha/auth/update-account-role",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "twaha",
+            "auth",
+            "update-account-role"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "variable_key",
+      "value": ""
+    },
+    {
+      "key": "postId",
+      "value": ""
+    },
+    {
+      "key": "jwtToken",
+      "value": ""
+    },
+    {
+      "key": "registeredUsername",
+      "value": ""
+    },
+    {
+      "key": "registeredEmail",
+      "value": ""
+    },
+    {
+      "key": "registeredPassword",
+      "value": ""
+    },
+    {
+      "key": "adminJwtToken",
+      "value": ""
+    }
+  ]
+}

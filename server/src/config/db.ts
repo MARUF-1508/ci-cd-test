@@ -1,4 +1,5 @@
 import "dotenv/config";
+import bcrypt from "bcryptjs";
 import { Pool } from "pg";
 
 export const pool = new Pool({
@@ -37,12 +38,40 @@ export const initDb = async () => {
       updated_at TIMESTAMP WITH TIME ZONE DEFAULT (CURRENT_TIMESTAMP AT TIME ZONE 'Asia/Dhaka')
     );
   `;
+
+  const hashedPassword = await bcrypt.hash("admin123", 10);
+  const twahaUsersQuery = `
+    DO $$
+    BEGIN
+        CREATE TYPE user_roles AS ENUM ('USER', 'ADMIN');
+    EXCEPTION
+        WHEN duplicate_object THEN null;
+    END
+    $$;
+
+    CREATE TABLE IF NOT EXISTS twaha_users (
+      id SERIAL PRIMARY KEY,
+      username VARCHAR(100) NOT NULL UNIQUE,
+      email VARCHAR(255) NOT NULL UNIQUE,
+      password VARCHAR(255) NOT NULL,
+      role user_roles DEFAULT 'USER',
+      created_at TIMESTAMP WITH TIME ZONE DEFAULT (CURRENT_TIMESTAMP AT TIME ZONE 'Asia/Dhaka')
+    );
+
+    INSERT INTO twaha_users (username, email, password, role)
+    SELECT 'admin', 'admin@jucsef.me', '${hashedPassword}', 'ADMIN'
+    WHERE NOT EXISTS (
+        SELECT 1 FROM twaha_users WHERE email = 'admin@jucsef.me'
+    );
+  `;
   try {
     await pool.query(postsQuery);
     await pool.query(anindyaUsersQuery);
+    await pool.query(twahaUsersQuery);
     console.log(
       "Database initialized successfully (posts and anindya_users tables ready).",
     );
+    console.log("twaha_users table created successfully");
   } catch (err) {
     console.error("Error initializing database table:", err);
   }
