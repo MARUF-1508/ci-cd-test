@@ -48,8 +48,8 @@ export const initDb = async () => {
     );
   `;
 
-    const hashedPassword = await bcrypt.hash("admin123", 10);
-    const twahaUsersQuery = `
+  const hashedPassword = await bcrypt.hash("admin123", 10);
+  const twahaUsersQuery = `
     DO $$
     BEGIN
         CREATE TYPE user_roles AS ENUM ('USER', 'ADMIN');
@@ -59,6 +59,10 @@ export const initDb = async () => {
     $$;
 
     CREATE TABLE IF NOT EXISTS twaha_users (
+      id SERIAL PRIMARY KEY,
+      username VARCHAR(100) NOT NULL UNIQUE,
+      email VARCHAR(255) NOT NULL UNIQUE,
+      password VARCHAR(255) NOT NULL,
       role user_roles DEFAULT 'USER',
       created_at TIMESTAMP WITH TIME ZONE DEFAULT (CURRENT_TIMESTAMP AT TIME ZONE 'Asia/Dhaka')
     );
@@ -89,7 +93,7 @@ export const initDb = async () => {
 
 );
 `;
-  
+
   try {
     await pool.query(postsQuery);
     await pool.query(anindyaUsersQuery);
