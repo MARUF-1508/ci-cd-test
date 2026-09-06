@@ -182,7 +182,7 @@ export const getAccountInfo = async (c: Context) => {
       return c.json({ errCode: 300, errMsg: "Unauthorized" }, 401);
     }
 
-    const user = await TwahaUserModel.findByUsername(payload.name);
+    const user = await TwahaUserModel.findByUsername(payload.username);
     if (!user) {
       return c.json({ errCode: 235, errMsg: "User not found" }, 404);
     }
@@ -202,7 +202,7 @@ export const updateAccountRole = async (c: Context) => {
       return c.json({ errCode: 300, errMsg: "Unauthorized" }, 401);
     }
 
-    const user = await TwahaUserModel.findByUsername(payload.name);
+    const user = await TwahaUserModel.findByUsername(payload.username);
     if (!user) {
       return c.json({ errCode: 301, errMsg: "User not found" }, 404);
     }
