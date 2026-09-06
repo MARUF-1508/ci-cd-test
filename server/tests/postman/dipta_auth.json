@@ -1,0 +1,818 @@
+{
+	"info": {
+		"_postman_id": "4cf7e39c-93aa-4a36-b88b-9ffa4bbe6284",
+		"name": "dipta_auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "57155885",
+		"_collection_link": "https://2024dipta-6384523.postman.co/workspace/Dipta-13's-Workspace~875fe404-8507-499e-81ca-917ccaefcf49/collection/57155885-4cf7e39c-93aa-4a36-b88b-9ffa4bbe6284?action=share&source=collection_link&creator=57155885"
+	},
+	"item": [
+		{
+			"name": "register_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(",
+							"    \"Register status should be 201\",",
+							"    function()",
+							"    {",
+							"        pm.response.to.have.status(201);",
+							"    }",
+							");",
+							"",
+							"",
+							"let response = pm.response.json();",
+							"",
+							"",
+							"pm.test(",
+							"    \"Response should contain user\",",
+							"    function()",
+							"    {",
+							"        pm.expect(response)",
+							"        .to.have.property(\"user\");",
+							"    }",
+							");",
+							"",
+							"",
+							"pm.test(",
+							"    \"Username should match\",",
+							"    function()",
+							"    {",
+							"        pm.expect(response.user.username)",
+							"        .to.eql(\"dipta\");",
+							"    }",
+							");",
+							"",
+							"",
+							"pm.test(",
+							"    \"Email should match\",",
+							"    function()",
+							"    {",
+							"        pm.expect(response.user.email)",
+							"        .to.eql(\"dipta@test.com\");",
+							"    }",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"dipta\",\n    \"email\":\"dipta@test.com\",\n    \"password\":\"123456\",\n    \"role\":\"user\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/dipta/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"dipta",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(",
+							"    \"Login status should be 200\",",
+							"    function()",
+							"    {",
+							"        pm.response.to.have.status(200);",
+							"    }",
+							");",
+							"",
+							"",
+							"let response = pm.response.json();",
+							"",
+							"",
+							"pm.test(",
+							"    \"JWT token exists\",",
+							"    function()",
+							"    {",
+							"        pm.expect(response)",
+							"        .to.have.property(\"token\");",
+							"    }",
+							");",
+							"",
+							"",
+							"pm.collectionVariables.set(",
+							"    \"token\",",
+							"    response.token",
+							");",
+							"",
+							"",
+							"console.log(",
+							"    \"JWT Saved:\",",
+							"    response.token",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n    \"email\":\"dipta@test.com\",\n    \"password\":\"123456\"\n    \n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/dipta/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"dipta",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Valid Token Protected Endpoint Test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(",
+							"    \"Protected route accessible\",",
+							"    function()",
+							"    {",
+							"        pm.response.to.have.status(200);",
+							"    }",
+							");",
+							"",
+							"",
+							"let response =",
+							"pm.response.json();",
+							"",
+							"",
+							"pm.test(",
+							"    \"User information returned\",",
+							"    function()",
+							"    {",
+							"        pm.expect(response)",
+							"        .to.have.property(\"user\");",
+							"    }",
+							");",
+							"",
+							"",
+							"pm.test(",
+							"    \"Correct username returned\",",
+							"    function()",
+							"    {",
+							"        pm.expect(response.user.username)",
+							"        .to.eql(\"dipta\");",
+							"    }",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/dipta/auth/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"dipta",
+						"auth",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Missing Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(",
+							"    \"Missing token should return 401\",",
+							"    function()",
+							"    {",
+							"        pm.response.to.have.status(401);",
+							"    }",
+							");",
+							"",
+							"",
+							"let response =",
+							"pm.response.json();",
+							"",
+							"",
+							"pm.test(",
+							"    \"Error message exists\",",
+							"    function()",
+							"    {",
+							"        pm.expect(response)",
+							"        .to.have.property(\"message\");",
+							"    }",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/dipta/auth/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"dipta",
+						"auth",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(",
+							"    \"Invalid token rejected\",",
+							"    function()",
+							"    {",
+							"        pm.response.to.have.status(401);",
+							"    }",
+							");",
+							"",
+							"",
+							"let response =",
+							"pm.response.json();",
+							"",
+							"",
+							"pm.test(",
+							"    \"Invalid token message\",",
+							"    function()",
+							"    {",
+							"        pm.expect(response.message)",
+							"        .to.exist;",
+							"    }",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer abc123",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/dipta/auth/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"dipta",
+						"auth",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Duplicate_Email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(",
+							"\"Duplicate email rejected\",",
+							"function()",
+							"{",
+							"    pm.response.to.have.status(409);",
+							"});",
+							"",
+							"",
+							"let response =",
+							"pm.response.json();",
+							"",
+							"",
+							"pm.expect(response.message)",
+							".to.eql(",
+							"\"Email already exists\"",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"dipta\",\n    \"email\":\"dipta@test.com\",\n    \"password\":\"123456\",\n    \"role\":\"user\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/dipta/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"dipta",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register_Admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(",
+							"    \"Admin registration successful\",",
+							"    function(){",
+							"        pm.response.to.have.status(201);",
+							"    }",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"dipta_admin\",\n    \"email\":\"admin@test.com\",\n    \"password\":\"123456\",\n    \"role\":\"admin\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/dipta/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"dipta",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login_Admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(",
+							"    \"Admin login successful\",",
+							"    function(){",
+							"        pm.response.to.have.status(200);",
+							"    }",
+							");",
+							"",
+							"",
+							"let response = pm.response.json();",
+							"",
+							"",
+							"pm.collectionVariables.set(",
+							"\"admin_token\",",
+							"response.token",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"admin@test.com\",\n    \"password\":\"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/dipta/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"dipta",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		
+		{
+			"name": "Register_2nd_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(",
+							"    \"User registration successful\",",
+							"    function(){",
+							"        pm.response.to.have.status(201);",
+							"    }",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"dipta_user\",\n    \"email\":\"user@test.com\",\n    \"password\":\"123456\",\n    \"role\":\"user\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/dipta/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"dipta",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Log_in_second_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(",
+							"    \"User login successful\",",
+							"    function(){",
+							"        pm.response.to.have.status(200);",
+							"    }",
+							");",
+							"",
+							"",
+							"let response = pm.response.json();",
+							"",
+							"",
+							"pm.collectionVariables.set(",
+							"\"user_token\",",
+							"response.token",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"user@test.com\",\n    \"password\":\"123456\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/dipta/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"dipta",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Admin Endpoint With User Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(",
+							"    \"User cannot access admin route\",",
+							"    function(){",
+							"        pm.response.to.have.status(403);",
+							"    }",
+							");",
+							"",
+							"",
+							"let response = pm.response.json();",
+							"",
+							"",
+							"pm.expect(response.message)",
+							".to.exist;"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/dipta/auth/admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"dipta",
+						"auth",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin_Endpoint_with_accessed_by _admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(",
+							"    \"Admin can access admin route\",",
+							"    function(){",
+							"        pm.response.to.have.status(200);",
+							"    }",
+							");",
+							"",
+							"",
+							"let response = pm.response.json();",
+							"",
+							"",
+							"pm.test(",
+							"    \"Admin data returned\",",
+							"    function(){",
+							"        pm.expect(response)",
+							"        .to.have.property(\"message\");",
+							"    }",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{admin_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/dipta/auth/admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"dipta",
+						"auth",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "admin_token",
+			"value": ""
+		},
+		{
+			"key": "post_id",
+			"value": ""
+		},
+		{
+			"key": "user_token",
+			"value": ""
+		}
+	]
+}

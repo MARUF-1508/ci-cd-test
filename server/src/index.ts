@@ -5,6 +5,7 @@ import { logger } from "hono/logger";
 import postRoutes from "./routes/postRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import { initDb } from "./config/db.js";
+import diptaAuthRoutes from "./routes/diptaAuthRoutes.js";
 
 const app = new Hono();
 
@@ -16,6 +17,7 @@ app.get("/", (c) => c.text("Forum API server running..."));
 
 app.route("/api/posts", postRoutes);
 app.route("/api/anindya/auth", authRoutes);
+app.route("/api/dipta/auth",diptaAuthRoutes);
 
 const port = Number(process.env.PORT) || 5000;
 

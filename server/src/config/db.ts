@@ -37,11 +37,33 @@ export const initDb = async () => {
       updated_at TIMESTAMP WITH TIME ZONE DEFAULT (CURRENT_TIMESTAMP AT TIME ZONE 'Asia/Dhaka')
     );
   `;
+
+  const diptaUsersQuery = `
+ CREATE TABLE IF NOT EXISTS dipta_users(
+
+    id SERIAL PRIMARY KEY,
+
+    username VARCHAR(100) UNIQUE NOT NULL,
+
+    email VARCHAR(255) UNIQUE NOT NULL,
+
+    password TEXT NOT NULL,
+
+    role VARCHAR(20) DEFAULT 'user',
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);
+`;
+  
   try {
     await pool.query(postsQuery);
     await pool.query(anindyaUsersQuery);
+    await pool.query(diptaUsersQuery);
     console.log(
-      "Database initialized successfully (posts and anindya_users tables ready).",
+      "Database initialized successfully (posts and anindya_users , Dipta_users tables ready).",
     );
   } catch (err) {
     console.error("Error initializing database table:", err);
