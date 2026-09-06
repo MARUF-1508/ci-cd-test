@@ -4,14 +4,14 @@ import { authMiddleware, adminMiddleware } from "../middleware/marufAuthMiddlewa
 import { pool } from "../config/db.js";
 import type { JwtPayload } from "../types/marufUserType.js";
 
-const authRoutes = new Hono();
+const authRoutes = new Hono<{ Variables: { user: JwtPayload } }>();
 
 authRoutes.post("/register", register);
 authRoutes.post("/login", login);
 authRoutes.get("/me", authMiddleware, getMe);
 
 authRoutes.get("/admin-only", authMiddleware, adminMiddleware, async (c) => {
-  const user = c.get("user") as JwtPayload;
+  const user = c.get("user");
   return c.json({
     message: "Admin access granted!",
     user: { id: user.id, username: user.username, role: user.role }
