@@ -34,10 +34,8 @@ export const initDb = async () => {
     );
   `;
 
-
   const marufUsersQuery = `
     CREATE TABLE IF NOT EXISTS maruf_users (
-
       id SERIAL PRIMARY KEY,
       username VARCHAR(100) NOT NULL UNIQUE,
       email VARCHAR(255) NOT NULL UNIQUE,
@@ -75,23 +73,15 @@ export const initDb = async () => {
   `;
 
   const diptaUsersQuery = `
- CREATE TABLE IF NOT EXISTS dipta_users(
-
-    id SERIAL PRIMARY KEY,
-
-    username VARCHAR(100) UNIQUE NOT NULL,
-
-    email VARCHAR(255) UNIQUE NOT NULL,
-
-    password TEXT NOT NULL,
-
-    role VARCHAR(20) DEFAULT 'user',
-
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-
-);
+    CREATE TABLE IF NOT EXISTS dipta_users(
+        id SERIAL PRIMARY KEY,
+        username VARCHAR(100) UNIQUE NOT NULL,
+        email VARCHAR(255) UNIQUE NOT NULL,
+        password TEXT NOT NULL,
+        role VARCHAR(20) DEFAULT 'user',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
 `;
 
   try {

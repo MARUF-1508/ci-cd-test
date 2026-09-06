@@ -78,7 +78,6 @@ jobs:
           pnpm dlx newman run server/tests/postman/twaha_auth.json
           pnpm dlx newman run server/tests/postman/dipta_auth.json
           pnpm dlx newman run server/tests/postman/maruf_auth.json
-
           # pnpm dlx newman run client/src/tests/postman/DummyJSON.json
           # pnpm dlx newman run client/src/tests/postman/JSONPlaceholder.json
           # pnpm dlx newman run client/src/tests/postman/postmanEcho.json
